@@ -1,0 +1,313 @@
+html,
+body {
+  height: 100%; /* html과 body의 높이를 100%로 설정 */
+  overflow: auto; /* 스크롤이 가능하도록 설정 */
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ghanachoco";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ghanachoco.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KBO-Dia-Gothic_bold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  font-family: "Pretendard-Regular";
+}
+
+/* 스플래시 화면에서 비디오 전체화면 */
+.splash video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  filter: grayscale(100%);
+}
+
+.splash .mainlogo img {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+/* 마우스를 올렸을 때 확대 효과 */
+.splash .mainlogo img:hover {
+  transform: scale(1.1);
+}
+
+/* 클릭할 때 눌리는 효과 */
+.splash .mainlogo img:active {
+  transform: scale(0.95);
+}
+
+.main-content > div {
+  display: none; /* 초기에는 숨김 */
+}
+
+/* 메인 화면 스타일 */
+.main-content {
+  background-color: #1f1f1f;
+  color: #fff;
+  min-height: 100vh; /* 최소 높이를 100vh로 설정하여 배경색 유지 */
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 300px;
+  height: 300px;
+  margin-top: 80px;
+  margin-left: 40px;
+  display: block;
+}
+
+.maintext-container {
+  width: 1200px;
+  margin-top: 120px;
+  margin-left: 150px;
+  line-height: 1.6em;
+  letter-spacing: -0.05em;
+  color: #fff;
+  word-break: keep-all;
+  text-indent: lem;
+}
+
+.paragraph {
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 80%;
+  height: 1px;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.history-container {
+  margin-left: 150px;
+  margin-top: 60px;
+}
+
+.historytitle {
+  display: inline-block;
+  color: #fff;
+  font-size: 40px;
+  padding: 20px;
+  font-family: "ghanachoco";
+}
+
+.nextbutton {
+  display: inline-block;
+  color: #fff;
+  font-size: 30px;
+  padding: 0px 20px;
+  font-family: "ghanachoco";
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.nextbutton:hover {
+  transform: scale(1.2); /* 마우스 오버 시 1.2배 확대 */
+}
+
+.playercontainer {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 20px;
+  margin-top: 30px;
+}
+
+.player1,
+.player2,
+.player3,
+.player4 {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* 기본적으로 투명하게 설정 */
+  transition: opacity 1s ease-in-out; /* 부드러운 페이드 효과 */
+}
+
+.player1.active,
+.player2.active,
+.player3.active,
+.player4.active {
+  opacity: 1; /* 활성화된 이미지는 보이도록 설정 */
+}
+
+.historytitle,
+.playercontainer {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; /* 이 속성이 클릭 가능성에 도움을 줄 수 있습니다. */
+  cursor: pointer; /* 마우스 포인터를 변경하여 클릭할 수 있음을 나타냄 */
+}
+
+.history {
+  margin-left: 150px;
+  margin-top: 80px;
+}
+
+.historybox {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과와 그림자 전환 */
+}
+
+.historybox:hover {
+  transform: scale(1.05) translateX(10px); /* 확대와 오른쪽으로 이동 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 그림자를 추가하여 강조 */
+}
+
+.historyimg,
+.historydetailbox {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.historyimg {
+  width: 400px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.historydetailbox {
+  width: 400px;
+  text-align: left;
+}
+
+.year {
+  color: #fff;
+  font-size: 27px;
+  font-family: "KBO-Dia-Gothic_bold";
+  padding-bottom: 20px;
+}
+
+.detail {
+  font-size: 14px;
+  line-height: 1.6em;
+  letter-spacing: -0.05em;
+  color: #fff;
+  word-break: keep-all;
+  text-indent: lem;
+  padding-top: 10px;
+}
+
+.historybox {
+  margin-top: 40px;
+}
+
+.team-container1,
+.team-container2 {
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.team1,
+.team2,
+.team3,
+.team4,
+.team5,
+.team6,
+.team7,
+.team8,
+.team9,
+.team10 {
+  width: auto;
+  height: 80px;
+  padding: 0px 20px;
+  display: inline-block;
+  opacity: 0; /* 초기 투명도 0 */
+  transition: opacity 0.5s ease, transform 0.3s ease; /* 부드러운 애니메이션 효과 */
+}
+
+.team-visible {
+  opacity: 1; /* 보여질 때의 투명도 */
+}
+
+.team1:hover,
+.team2:hover,
+.team3:hover,
+.team4:hover,
+.team5:hover,
+.team6:hover,
+.team7:hover,
+.team8:hover,
+.team9:hover,
+.team10:hover {
+  transform: scale(1.1); /* 마우스를 올렸을 때 확대 */
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 310px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
